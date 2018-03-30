@@ -1,0 +1,27 @@
+Plan:
+
+Lesson 1:  	
+ - Presentation iOS_Training_1_Introduction
+ - Swift Playground Part 1
+
+Lesson 2:
+ - Swift Playground Part 2
+ - Presentation iOS_Training_2_iOS_Fundamentals
+ - Presentation iOS_Training_3_XCode_workspace + Sample app
+
+Lesson 3:
+ - Presentation iOS_Training_4_View_and_View_Controllers Part View Controllers Overview
+ - Single View App - Phone Call
+ - Homework - Calculator
+
+Lesson 4:
+ - Presentation iOS_Training_4_View_and_View_Controllers Part Navigation Controller
+ - Table View App - Countries Array
+
+Lesson 5:
+ - Presentation iOS_Training_4_View_and_View_Controllers Part TabBar Controller
+ - TabBar App - Library
+ - Homework - PhoneBook
+
+Lesson 6:	
+ - Custom View App - Clock
