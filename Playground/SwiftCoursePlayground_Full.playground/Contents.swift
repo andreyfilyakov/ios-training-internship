@@ -94,6 +94,10 @@ for i in 0..<64{
 
 }
 
+for i in stride(from: 0, to: 10, by: 2) {
+    print(i)
+}
+
 for fruit in fruits{
     print (fruit)
 }
@@ -280,7 +284,48 @@ print(triangle.sideLength)
 let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
 let sideLength = optionalSquare?.sideLength
 
+//:#Part 6 - Protocols and extensions
+protocol ExampleProtocol {
+    var simpleDescription: String { get }
+    mutating func adjust()
+}
 
+class SimpleClass: ExampleProtocol {
+    var simpleDescription: String = "A very simple class."
+    var anotherProperty: Int = 69105
+    func adjust() {
+        simpleDescription += "  Now 100% adjusted."
+    }
+}
+
+var instance = SimpleClass()
+instance.adjust()
+let aDescription = instance.simpleDescription
+
+struct SimpleStructure: ExampleProtocol {
+    var simpleDescription: String = "A simple structure"
+    mutating func adjust() {
+        simpleDescription += " (adjusted)"
+    }
+}
+var b = SimpleStructure()
+b.adjust()
+let bDescription = b.simpleDescription
+
+extension Int: ExampleProtocol {
+    var simpleDescription: String {
+        return "The number \(self)"
+    }
+    mutating func adjust() {
+        self += 42
+    }
+}
+print(7.simpleDescription)
+
+let protocolValue: ExampleProtocol = instance
+print(protocolValue.simpleDescription)
+
+// print(protocolValue.anotherProperty)
 //:#Part 7 - Memory management
 //class Person {
 //    let name: String
@@ -328,4 +373,3 @@ unit4a = nil
 //:![[arc4]](arc4.png)
 //:![[arc5]](arc5.png)
 //:![[arc6]](arc6.png)
-

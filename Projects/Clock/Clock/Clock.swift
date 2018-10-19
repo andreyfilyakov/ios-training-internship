@@ -59,10 +59,12 @@ class Clock: UIView {
         let radius = min(rect.width / 2, rect.height / 2)
         let center = CGPoint(x: rect.width / 2, y: rect.height / 2)
         
+        // Clock background
         context?.setFillColor(clockColor.cgColor)
         context?.addArc(center: center, radius: radius, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
         context?.fillPath()
         
+        // Clock segments
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.setLineWidth(4.0)
         for alpha in stride(from: 0.0, to: 360.0, by: 6.0) {
@@ -80,15 +82,18 @@ class Clock: UIView {
         }
         context?.strokePath()
         
+        // Clock frame border
         context?.setLineWidth(2.0)
         context?.setStrokeColor(UIColor.white.cgColor)
         context?.addArc(center: center, radius: radius - 1, startAngle: 0, endAngle: .pi * 2, clockwise: true)
         context?.strokePath()
         
+        // Clock center
         context?.setFillColor(UIColor.red.cgColor)
         context?.addArc(center: center, radius: 6, startAngle: 0, endAngle: .pi * 2, clockwise: true)
         context?.fillPath()
         
+        // Angles calculation
         let second = Calendar.current.component(.second, from: time)
         let secondAngle = -Double(second) * 6.0 - 180.0
         let minute = Calendar.current.component(.minute, from: time)
@@ -96,6 +101,7 @@ class Clock: UIView {
         let hour = Calendar.current.component(.hour, from: time)
         let hourAngle = -Double(hour) * 30.0 - 180.0 + (minuteAngle + 180.0) / 12.0
         
+        // Hour arrow
         let hourX = (radius - 50) * CGFloat(sin(hourAngle.toRadian())) + center.x
         let hourY = (radius - 50) * CGFloat(cos(hourAngle.toRadian())) + center.y
         context?.setStrokeColor(UIColor.red.cgColor)
@@ -104,6 +110,7 @@ class Clock: UIView {
         context?.addLine(to: CGPoint(x: hourX, y: hourY))
         context?.strokePath()
         
+        // Minute Arrow
         let minuteX = (radius - 10) * CGFloat(sin(minuteAngle.toRadian())) + center.x
         let minuteY = (radius - 10) * CGFloat(cos(minuteAngle.toRadian())) + center.y
         context?.setLineWidth(2.0)
@@ -111,6 +118,7 @@ class Clock: UIView {
         context?.addLine(to: CGPoint(x: minuteX, y: minuteY))
         context?.strokePath()
         
+        // Second Arrow
         let secondX = (radius - 10) * CGFloat(sin(secondAngle.toRadian())) + center.x
         let secondY = (radius - 10) * CGFloat(cos(secondAngle.toRadian())) + center.y
         context?.setStrokeColor(secondColor.cgColor)
